@@ -1,7 +1,7 @@
 import scrapy
 
 
-class QuotesSpider(scrapy.Spider):
+class YelpSpider(scrapy.Spider):
     # "name" identifies our spider
     name = "yelp"
 
@@ -32,6 +32,15 @@ class QuotesSpider(scrapy.Spider):
                 'rating': review.css('div.biz-rating.biz-rating-large.clearfix div.i-stars::attr(title)')[0].extract(),
                 'review': review.css('div.review-content p::text')[0].extract(),
             }
+
+        #attempt to include links to each individual yelp review too
+        #for review in response.css("div.review.review--with-sidebar"):
+         #   yield {
+          #      'date': review.css('div.review-wrapper.review-content.biz-rating.biz-rating-large.clearfix span.rating-qualifier::text')[0].extract(),
+           #     'rating': review.css('div.review-wrapper.review-content.biz-rating.biz-rating-large.clearfix div.i-stars::attr(title)')[0].extract(),
+            #    'review': review.css('div.review-wrapper.review-content p::text')[0].extract(),
+             #   'link': review.css('div.review-wrapper.review-sidebar-content ul.action-link-list.action-link-list--small a.arrange.arrange--middle.send-to-friend::href')[0].extract()
+            #}
 
         page = response.url.split("/")[-2]
         filename = 'quotes-%s.html' % page
