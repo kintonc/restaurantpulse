@@ -54,7 +54,6 @@ class YelpSpider(scrapy.Spider):
         self.log('Saved file %s' % filename)
 
 
-
 class TripAdvisorSpider(scrapy.Spider):
     # "name" identifies our spider
     name = "tripadvisor"
