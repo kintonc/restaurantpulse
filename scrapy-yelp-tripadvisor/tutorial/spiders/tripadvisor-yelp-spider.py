@@ -5,15 +5,20 @@ class YelpSpider(scrapy.Spider):
     # "name" identifies our spider
     name = "yelp"
 
+    #edited per here: https://doc.scrapy.org/en/latest/topics/spiders.html
+    def __init__(self, url = None):
+        self.start_urls = [url]
+
+
     #must return an iterable of Requests (you can return a list of requests or 
     #write a generator function) which the Spider will begin to crawl from. 
     #Subsequent requests will be generated successively from these initial 
     #requests
     def start_requests(self):
-        urls = [
-            'https://www.yelp.com/biz/sushi-bong-markham?sort_by=date_desc&start=0',
-        ]
-        for url in urls:
+        #urls = [
+         #   'https://www.yelp.com/biz/sushi-bong-markham?sort_by=date_desc&start=0',
+        #]
+        for url in self.start_urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
 
@@ -54,15 +59,16 @@ class TripAdvisorSpider(scrapy.Spider):
     # "name" identifies our spider
     name = "tripadvisor"
 
+    #edited per here: https://doc.scrapy.org/en/latest/topics/spiders.html
+    def __init__(self, url = None):
+        self.start_urls = [url]
+
     #must return an iterable of Requests (you can return a list of requests or 
     #write a generator function) which the Spider will begin to crawl from. 
     #Subsequent requests will be generated successively from these initial 
     #requests
     def start_requests(self):
-        urls = [
-            'https://www.tripadvisor.ca/Restaurant_Review-g155019-d4471873-Reviews-Seven_Lives-Toronto_Ontario.html#REVIEWS',
-        ]
-        for url in urls:
+        for url in self.start_urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
 
