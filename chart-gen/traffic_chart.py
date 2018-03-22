@@ -22,7 +22,7 @@ def get_traffic_for_hour(data, hour):
     return list
 
 def create_chart(google_data, filename, restaurant_name):
-    output_file(filename+".html")
+    output_file("../scrapy-yelp-tripadvisor/tutorial/spiders/data/html/" + filename + ".html")
 
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     hours = ['11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm']
@@ -80,7 +80,7 @@ now = datetime.datetime.now()
 date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
 #date = '2018-03-21'
 
-restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya_north_york', 'sushi_bong', 'uncle_tetsu']
+restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
 #wilbur_mexicana_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[0] + "_gmaps_" + date + "_map.json"))
 celebrity_hot_pot_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[1] + "_gmaps_" + date + "_map.json"))
 hashi_izakaya_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[2] + "_gmaps_" + date + "_map.json"))

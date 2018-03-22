@@ -109,7 +109,7 @@ kinka_izakaya_emotion_totals = EmotionTotal(analysis_kinka_izakaya)
 sushi_bonga_emotion_totals = EmotionTotal(analysis_sushi_bonga)
 uncle_tetsu_emotion_totals = EmotionTotal(analysis_uncle_tetsu)
 
-output_file("sentiment_graph_1.html")
+output_file("../scrapy-yelp-tripadvisor/tutorial/spiders/data/html/sentiment_graph_1.html")
 
 # restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
 sentiments = ["Joy", "Anger", "Sadness"]
@@ -140,7 +140,7 @@ p.legend.orientation = "horizontal"
 show(p)
 
 
-output_file("sentiment_graph_2.html")
+output_file("../scrapy-yelp-tripadvisor/tutorial/spiders/data/html/sentiment_graph_2.html")
 
 # restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
 sentiments = ["Positive", "Neutral", "Negative"]
