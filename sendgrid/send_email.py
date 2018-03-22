@@ -4,7 +4,6 @@ import datetime
 import json
 import time
 from pprint import pprint
-from scrapy import cmdline
 from sendgrid.helpers.mail import Email, Content, Substitution, Mail
 try:
     # Python 3
@@ -139,8 +138,8 @@ def send_email():
 		shortName = restaurants[str(i)]['nospace_name']
 		yelpURL = restaurants[str(i)]['yelp']
 		tripadvisorURL = restaurants[str(i)]['tripadvisor']
-		yelpFileName = 'data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
-		tripadvisorFileName = 'data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
 
 		yelpData = datasanization_yelp(yelpFileName)
 		tripadvisorData = datasanization_tripadvisor(tripadvisorFileName)
@@ -155,8 +154,8 @@ def send_email():
 
 
 	htmltoinject = open('bars.html', 'r')
-	mail.personalizations[0].add_substitution(Substitution("-htmlinjection-", '<img src= \
-		"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Official_Portrait_of_President_Donald_Trump.jpg/1200px-Official_Portrait_of_President_Donald_Trump.jpg"'))
+	#mail.personalizations[0].add_substitution(Substitution("-htmlinjection-", '<img src= \
+		#"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Official_Portrait_of_President_Donald_Trump.jpg/1200px-Official_Portrait_of_President_Donald_Trump.jpg"'))
 
 
 	mail.template_id = "3e49f640-53f5-4d9c-b2ad-52d0ef931499"

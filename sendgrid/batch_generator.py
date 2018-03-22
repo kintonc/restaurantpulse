@@ -20,8 +20,8 @@ def batch_generator():
 		nospace_name = restaurants[str(i)]['nospace_name']
 		yelpURL = restaurants[str(i)]['yelp']
 		tripadvisorURL = restaurants[str(i)]['tripadvisor']
-		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + nospace_name + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
-		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + nospace_name + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		yelpFileName = 'data/json/' + nospace_name + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		tripadvisorFileName = 'data/json/' + nospace_name + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
 
 
 		yelpCommand = 'scrapy crawl yelp -a url="' + yelpURL + '" -t json --nolog -o - > "' + yelpFileName + '"'
