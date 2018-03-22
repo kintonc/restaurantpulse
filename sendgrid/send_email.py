@@ -147,6 +147,17 @@ def send_email():
 
 	restaurants = populateRestaurants()
 
+	#pull s3 counter number
+	counterFile = open('configs/s3counter.txt', 'r')
+	counter = int(counterFile.read())
+
+	imgStyle = '"width: 100%"'
+	nlpImgSrc1 = '<img src="https://s3.amazonaws.com/afm344-2/sentiment_graph_1-' + str(counter) + '.png" style=' + imgStyle + '>'
+	nlpImgSrc2 = '<img src="https://s3.amazonaws.com/afm344-2/sentiment_graph_2-' + str(counter) + '.png" style=' + imgStyle + '>'
+	mail.personalizations[0].add_substitution(Substitution("-nlpimage1-", nlpImgSrc1))
+	mail.personalizations[0].add_substitution(Substitution("-nlpimage2-", nlpImgSrc2))
+
+
 	#run this for loop X times, X being the number of restaurants we're including in our report
 	for i in range(0,len(restaurants)):
 		restaurantName = restaurants[str(i)]['name']
@@ -155,7 +166,7 @@ def send_email():
 		tripadvisorURL = restaurants[str(i)]['tripadvisor']
 		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '_review.json'
 		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '_review.json'
-		gmapsImgSrc = '<img src="https://s3.amazonaws.com/afm344-2/traffic_' + shortName + '.png">'
+		gmapsImgSrc = '<img src="https://s3.amazonaws.com/afm344-2/traffic_' + shortName + '-' + str(counter) + '.png" style=' + imgStyle + '>'
 
 		print("Processing data sanitization " + restaurantName + " Yelp...\n")
 		yelpData = datasanization_yelp(yelpFileName)

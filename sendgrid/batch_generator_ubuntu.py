@@ -1,4 +1,3 @@
-from scrapy import cmdline
 import json
 import datetime
 import os
@@ -48,7 +47,7 @@ def batch_generator():
 	batchscript += '\npython html_to_image.py'
 
 	#upload png onto S3
-	batchscript += '\npython s3_upload.py'
+	batchscript += '\npython3 s3_upload.py'
 
 	#send email python
 	batchscript += '\ncd /home/ubuntu/afm344/sendgrid/'
