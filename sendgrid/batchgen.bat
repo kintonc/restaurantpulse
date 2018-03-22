@@ -9,3 +9,5 @@ scrapy crawl yelp -a url="https://www.yelp.ca/biz/celebrity-hotpot-toronto?sort_
 scrapy crawl tripadvisor -a url="https://www.tripadvisor.ca/Restaurant_Review-g155019-d4945199-Reviews-Celebrity_Hotpot-Toronto_Ontario.html" -t json --nolog -o - > "data/json/celebrity_hot_pot_tripadvisor_2018-03-21.json"
 scrapy crawl yelp -a url="https://www.yelp.ca/biz/uncle-tetsus-japanese-cheesecake-toronto?sort_by=date_desc" -t json --nolog -o - > "data/json/uncle_tetsu_yelp_2018-03-21.json"
 scrapy crawl tripadvisor -a url="https://www.tripadvisor.ca/Restaurant_Review-g155019-d7933088-Reviews-Uncle_Tetsu_s_Cheese_Cake-Toronto_Ontario.html" -t json --nolog -o - > "data/json/uncle_tetsu_tripadvisor_2018-03-21.json"
+ cd "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/googlemaps-foot-traffic"
+ python gmaps_scraper.py

@@ -3,30 +3,50 @@
 		"name": "Sushi Bong",
 		"nospace_name":"sushi_bong",
 		"yelp": "https://www.yelp.com/biz/sushi-bong-markham?sort_by=date_desc&start=0",
-		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d4471873-Reviews-Seven_Lives-Toronto_Ontario.html#REVIEWS"
+		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d4471873-Reviews-Seven_Lives-Toronto_Ontario.html#REVIEWS",
+		"minlat": 43.775093, 
+		"minlon": -79.413834, 
+		"maxlat": 43.775293,
+		"maxlon": -79.413543
 	},
 	"1": {
 		"name": "Kinka Izakaya North York",
 		"nospace_name":"kinka_izakaya_north_york",
 		"yelp": "https://www.yelp.com/biz/kinka-izakaya-north-york-toronto-4?sort_by=date_desc",
-		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d8277413-Reviews-Kinka_Izakaya_North_York-Toronto_Ontario.html"
+		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d8277413-Reviews-Kinka_Izakaya_North_York-Toronto_Ontario.html",
+		"minlat": 43.775093, 
+		"minlon": -79.413834, 
+		"maxlat": 43.775293,
+		"maxlon": -79.413543
 	},
 	"2": {
 		"name": "Hashi Izakaya",
 		"nospace_name":"hashi_izakaya",
 		"yelp": "https://www.yelp.com/biz/hashi-izakaya-toronto?sort_by=date_desc",
-		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d10056315-Reviews-Hashi_Izakaya-Toronto_Ontario.html"
+		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d10056315-Reviews-Hashi_Izakaya-Toronto_Ontario.html",
+		"minlat": 43.775093, 
+		"minlon": -79.413834, 
+		"maxlat": 43.775293,
+		"maxlon": -79.413543
 	},
 	"3": {
 		"name": "Celebrity Hot Pot",
 		"nospace_name":"celebrity_hot_pot",
 		"yelp": "https://www.yelp.ca/biz/celebrity-hotpot-toronto?sort_by=date_desc",
-		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d4945199-Reviews-Celebrity_Hotpot-Toronto_Ontario.html"
+		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d4945199-Reviews-Celebrity_Hotpot-Toronto_Ontario.html",
+		"minlat": 43.775093, 
+		"minlon": -79.413834, 
+		"maxlat": 43.775293,
+		"maxlon": -79.413543
 	},
 	"4": {
 		"name": "Uncle Tetsu",
 		"nospace_name":"uncle_tetsu",
 		"yelp": "https://www.yelp.ca/biz/uncle-tetsus-japanese-cheesecake-toronto?sort_by=date_desc",
-		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d7933088-Reviews-Uncle_Tetsu_s_Cheese_Cake-Toronto_Ontario.html"
+		"tripadvisor": "https://www.tripadvisor.ca/Restaurant_Review-g155019-d7933088-Reviews-Uncle_Tetsu_s_Cheese_Cake-Toronto_Ontario.html",
+		"minlat": 43.775093, 
+		"minlon": -79.413834, 
+		"maxlat": 43.775293,
+		"maxlon": -79.413543
 	}
 }

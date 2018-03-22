@@ -111,6 +111,8 @@ def datasanization_tripadvisor(filename):
 
 
 def send_email():
+	print("BEGIN send_email.py")
+
 	#sendgrid boiler plate
 	creddata = json.load(open('configs/creds.json'))
 	api_key = creddata['sendgrid']
@@ -141,7 +143,10 @@ def send_email():
 		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
 		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
 
+		print("Processing data sanitization " + restaurantName + " Yelp...\n")
 		yelpData = datasanization_yelp(yelpFileName)
+
+		print("Processing data sanitization " + restaurantName + " Tripadvisor...\n")
 		tripadvisorData = datasanization_tripadvisor(tripadvisorFileName)
 
 		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "name-", restaurantName))
@@ -153,7 +158,7 @@ def send_email():
 		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "tripadvisorreviews-", tripadvisorData['review']))
 
 
-	htmltoinject = open('bars.html', 'r')
+	# htmltoinject = open('bars.html', 'r')
 	#mail.personalizations[0].add_substitution(Substitution("-htmlinjection-", '<img src= \
 		#"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Official_Portrait_of_President_Donald_Trump.jpg/1200px-Official_Portrait_of_President_Donald_Trump.jpg"'))
 

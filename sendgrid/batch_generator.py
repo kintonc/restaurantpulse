@@ -14,7 +14,7 @@ def batch_generator():
 
 	batchscript = 'cd \"C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/scrapy-yelp-tripadvisor/tutorial/spiders"'
 
-
+	#scrapy commands
 	for i in range(0,len(restaurants)):
 		restaurantName = restaurants[str(i)]['name']
 		nospace_name = restaurants[str(i)]['nospace_name']
@@ -29,6 +29,12 @@ def batch_generator():
 
 		batchscript += "\n" + yelpCommand
 		batchscript += "\n" + tripadvisorCommand
+
+	#gmaps scraping commands
+	batchscript += '\n cd \"C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/googlemaps-foot-traffic"'
+	batchscript += '\n python gmaps_scraper.py'
+
+	#send email python
 
 	batch_file = open("batchgen.bat", "w")
 	batch_file.write(batchscript)
