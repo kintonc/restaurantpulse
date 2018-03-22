@@ -28,7 +28,20 @@ def datasanization_yelp(filename):
 		if (len(entry["review"])) > 100:
 			entry["review_short"] += "..."
 		entry["rating"] = entry["rating"][0:3]
-		entry["date"] = entry["date"][9:(len(entry["date"])-5)]
+
+		dateBeginChar = 0
+		dateEndChar = 0
+		for i in range(0, len(entry["date"])):
+			if entry["date"][i].isdigit():
+				dateBeginChar = i
+				break
+
+		for i in range(len(entry["date"]) - 1, -1, -1):
+			if entry["date"][i].isdigit():
+				dateEndChar = i + 1
+				break
+
+		entry["date"] = entry["date"][dateBeginChar:dateEndChar]
 
 	#get num reviews this week and average reviews, and create yelpreviews object
 	today = datetime.date.today()
@@ -140,8 +153,9 @@ def send_email():
 		shortName = restaurants[str(i)]['nospace_name']
 		yelpURL = restaurants[str(i)]['yelp']
 		tripadvisorURL = restaurants[str(i)]['tripadvisor']
-		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
-		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		yelpFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_yelp_' + datetime.date.today().strftime('%Y-%m-%d') + '_review.json'
+		tripadvisorFileName = '../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_tripadvisor_' + datetime.date.today().strftime('%Y-%m-%d') + '_review.json'
+		gmapsImgSrc = '<img src="https://s3.amazonaws.com/afm344-2/traffic_' + shortName + '.png">'
 
 		print("Processing data sanitization " + restaurantName + " Yelp...\n")
 		yelpData = datasanization_yelp(yelpFileName)
@@ -156,6 +170,7 @@ def send_email():
 		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "tripadvisorqty-", str(tripadvisorData['reviewCounter'])))
 		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "yelpreviews-", yelpData['review']))
 		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "tripadvisorreviews-", tripadvisorData['review']))
+		mail.personalizations[0].add_substitution(Substitution("-r" + str(i) + "gmaps-", gmapsImgSrc))
 
 
 	# htmltoinject = open('bars.html', 'r')

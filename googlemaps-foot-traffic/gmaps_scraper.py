@@ -28,7 +28,7 @@ def gmapsscraping():
 		res = populartimes.get(api_key, 
 			['restaurant'], (minLat, minLon), (maxLat, maxLon))
 
-		filename ='../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_gmaps_' + datetime.date.today().strftime('%Y-%m-%d') + '.json'
+		filename ='../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/' + shortName + '_gmaps_' + datetime.date.today().strftime('%Y-%m-%d') + '_map.json'
 
 		newfile = open(filename, 'w')
 		newfile.write(json.dumps(res, ensure_ascii=False))
