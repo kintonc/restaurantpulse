@@ -34,6 +34,13 @@ def batch_generator():
 	batchscript += '\n cd \"C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/googlemaps-foot-traffic"'
 	batchscript += '\n python gmaps_scraper.py'
 
+	#create gmaps charts (these are in html format)
+	batchscript += '\n cd \"C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/chart-gen/"'
+	batchscript += '\n python2 traffic_chart.py'
+
+	#create nlp charts (these are in html format)
+	batchscript += '\n python2 NLP_analysis.py'
+
 	#convert html charts into pngs
 	batchscript += '\n cd \"C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/sendgrid"'
 	batchscript += '\n python html_to_image.py'

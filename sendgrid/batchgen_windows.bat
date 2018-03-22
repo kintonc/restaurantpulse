@@ -11,3 +11,10 @@ scrapy crawl yelp -a url="https://www.yelp.ca/biz/uncle-tetsus-japanese-cheeseca
 scrapy crawl tripadvisor -a url="https://www.tripadvisor.ca/Restaurant_Review-g155019-d7933088-Reviews-Uncle_Tetsu_s_Cheese_Cake-Toronto_Ontario.html" -t json --nolog -o - > "data/json/uncle_tetsu_tripadvisor_2018-03-22_review.json"
  cd "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/googlemaps-foot-traffic"
  python gmaps_scraper.py
+ cd "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/chart-gen/"
+ python2 traffic_chart.py
+ python2 NLP_analysis.py
+ cd "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/sendgrid"
+ python html_to_image.py
+ python s3_upload.py
+ python send_email.py

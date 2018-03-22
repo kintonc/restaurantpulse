@@ -75,6 +75,7 @@ def create_chart(google_data, filename, restaurant_name):
     show(p)
 
 
+print("BEGIN traffic_chart.py")
 now = datetime.datetime.now()
 date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
 #date = '2018-03-21'
@@ -90,10 +91,15 @@ uncle_tetsu_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/d
 #google_data = json.load(open('googletraffic.json'))
 
 #create_chart(wilbur_mexicana_gmap, 'traffic_wilbur_mexicana', 'Wilbur Mexicana')
+print("BEGIN create_chart - Celebrity Hot Pot")
 create_chart(celebrity_hot_pot_gmap, 'traffic_celebrity_hot_pot', 'Celebrity Hot Pot')
+print("BEGIN create_chart - Hashi Izakaya")
 create_chart(hashi_izakaya_gmap, 'traffic_hashi_izakaya', 'Hashi  Izakaya')
+print("BEGIN create_chart - Kinka Izakaya")
 create_chart(kinka_izakaya_gmap, 'traffic_kinka_izakaya', 'Kinka Izakaya')
+print("BEGIN create_chart - Sushi Bong")
 create_chart(sushi_bong_gmap, 'traffic_sushi_bong', 'Sushi Bong')
+print("BEGIN create_chart - Uncle Tetsu")
 create_chart(uncle_tetsu_gmap, 'traffic_uncle_tetsu', 'Uncle Tetsu')
-
+print("END traffic_chart.py")
 

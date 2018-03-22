@@ -34,6 +34,23 @@ def batch_generator():
 	#gmaps scraping commands
 	batchscript += '\ncd /home/ubuntu/afm344/googlemaps-foot-traffic'
 	batchscript += '\npython3 gmaps_scraper.py'
+
+	#create gmaps charts (these are in html format)
+	batchscript += '\ncd /home/ubuntu/afm344/chart-gen'
+	batchscript += '\npython traffic_chart.py'
+
+	#create NLP analysis charts (these are in html format)
+	batchscript += '\ncd /home/ubuntu/afm344/chart-gen'
+	batchscript += '\npython NLP_analysis.py'
+
+	#convert html charts into pngs
+	batchscript += '\ncd /home/ubuntu/afm344/sendgrid'
+	batchscript += '\npython html_to_image.py'
+
+	#upload png onto S3
+	batchscript += '\npython s3_upload.py'
+
+	#send email python
 	batchscript += '\ncd /home/ubuntu/afm344/sendgrid/'
 	batchscript += '\npython send_email.py'
 	batchscript += '\nexit 0'

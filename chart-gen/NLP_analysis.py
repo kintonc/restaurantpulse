@@ -72,7 +72,7 @@ def EmotionTotal(analysis):
         pass
   return [JoySum, AngerSum, SadSum, PositiveSum, NeutralSum, NegativeSum]
 
-
+print("BEGIN NLP_analysis.py")
 
 now = datetime.datetime.now()
 date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
@@ -169,3 +169,5 @@ p.legend.location = "top_left"
 p.legend.orientation = "horizontal"
 
 show(p)
+
+print("END NLP_analysis.py")
