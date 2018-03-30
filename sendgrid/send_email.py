@@ -132,7 +132,7 @@ def send_email():
 	sg = sendgrid.SendGridAPIClient(apikey=api_key)
 	from_email = Email("wilburafm344@kinton.me")
 	subject = "Your weekly competitor report"
-	to_email = Email("kinton@kinton.me")
+	to_email = [Email("kinton@kinton.me"), Email("kkh4cheu@gmail.com")]
 	content = Content("text/html", "some content")
 	mail = Mail(from_email, subject, to_email, content)
 

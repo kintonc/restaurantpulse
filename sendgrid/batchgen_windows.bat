@@ -1,4 +1,4 @@
-cd "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/scrapy-yelp-tripadvisor/tutorial/spiders"
+crapy crawl yelp -a url="https://www.yelp.com/biz/sushi-bong-markham?sort_by=date_desc&start=0" -t json --nolog -o - > "data/json/sushi_bong_yelp_2018-03-22_review.jsond "C:/Users/kinto/Dropbox/1-Waterloo/AFM 344/Final project/afm344/scrapy-yelp-tripadvisor/tutorial/spiders"
 scrapy crawl yelp -a url="https://www.yelp.com/biz/sushi-bong-markham?sort_by=date_desc&start=0" -t json --nolog -o - > "data/json/sushi_bong_yelp_2018-03-22_review.json"
 scrapy crawl tripadvisor -a url="https://www.tripadvisor.ca/Restaurant_Review-g155019-d4471873-Reviews-Seven_Lives-Toronto_Ontario.html#REVIEWS" -t json --nolog -o - > "data/json/sushi_bong_tripadvisor_2018-03-22_review.json"
 scrapy crawl yelp -a url="https://www.yelp.com/biz/kinka-izakaya-north-york-toronto-4?sort_by=date_desc" -t json --nolog -o - > "data/json/kinka_izakaya_north_york_yelp_2018-03-22_review.json"
