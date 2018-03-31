@@ -158,6 +158,7 @@ p.x_range.range_padding = 0.1
 p.xgrid.grid_line_color = None
 p.axis.minor_tick_line_color = None
 p.outline_line_color = None
+p.title.align = 'center'
 #p.legend.location = "top_right"
 #p.legend.orientation = "horizontal"
 
@@ -204,6 +205,7 @@ p.x_range.range_padding = 0.1
 p.xgrid.grid_line_color = None
 p.axis.minor_tick_line_color = None
 p.outline_line_color = None
+p.title.align = 'center'
 #p.legend.location = "top_right"
 #p.legend.orientation = "horizontal"
 

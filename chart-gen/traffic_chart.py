@@ -66,15 +66,17 @@ def create_chart(google_data, filename, restaurant_name):
     p.xaxis.major_label_orientation = 1.5
     p.xgrid.grid_line_color = None
     p.yaxis.visible = False
+    p.title.align = 'center'
+
 
     show(p)
 
 print("Start traffice chart generation")
 
 # Getting today's date to pick up today's gmaps data file
-#now = datetime.datetime.now()
-#date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
-date = '2018-03-22'
+now = datetime.datetime.now()
+date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
+#date = '2018-03-22'
 
 # Picking up restaurant names to create bar chart for
 #restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
