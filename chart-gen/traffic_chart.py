@@ -9,18 +9,15 @@ from pprint import pprint
 import os
 
 
-def get_traffic_for_day(data):
-    list = []
-    for record in data:
-        list.append(record)
-    return list
-
+# Used to process gmaps json file
 def get_traffic_for_hour(data, hour):
     list = []
     for record in data:
         list.append(record['data'][hour])
     return list
 
+
+# Creates a bar chart
 def create_chart(google_data, filename, restaurant_name):
     output_file("../scrapy-yelp-tripadvisor/tutorial/spiders/data/html/" + filename + ".html")
 
@@ -39,8 +36,6 @@ def create_chart(google_data, filename, restaurant_name):
     seven_pm = get_traffic_for_hour(populartimes, 20)
     eight_pm = get_traffic_for_hour(populartimes, 21)
     nine_pm = get_traffic_for_hour(populartimes, 22)
-
-    # pprint(eleven_am)
 
     data = {'weekdays': weekdays,
             '11 am': eleven_am,
@@ -61,7 +56,7 @@ def create_chart(google_data, filename, restaurant_name):
 
     source = ColumnDataSource(data=dict(x=x, counts=counts))
 
-    p = figure(x_range=FactorRange(*x), plot_height=300, plot_width=1000, title="Traffic by hour " + restaurant_name,
+    p = figure(x_range=FactorRange(*x), plot_height=300, plot_width=1000, title="Google Maps Hourly Traffic - " + restaurant_name,
                toolbar_location=None, tools="")
 
     p.vbar(x='x', top='counts', width=0.9, source=source)
@@ -74,32 +69,34 @@ def create_chart(google_data, filename, restaurant_name):
 
     show(p)
 
+print("Start traffice chart generation")
 
-print("BEGIN traffic_chart.py")
-now = datetime.datetime.now()
-date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
-#date = '2018-03-21'
+# Getting today's date to pick up today's gmaps data file
+#now = datetime.datetime.now()
+#date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
+date = '2018-03-22'
 
-restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
-#wilbur_mexicana_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[0] + "_gmaps_" + date + "_map.json"))
-celebrity_hot_pot_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[1] + "_gmaps_" + date + "_map.json"))
-hashi_izakaya_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[2] + "_gmaps_" + date + "_map.json"))
-kinka_izakaya_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[3] + "_gmaps_" + date + "_map.json"))
-sushi_bong_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[4] + "_gmaps_" + date + "_map.json"))
-uncle_tetsu_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurants[5] + "_gmaps_" + date + "_map.json"))
+# Picking up restaurant names to create bar chart for
+#restaurants = ['wilbur_mexicana', 'celebrity_hot_pot', 'hashi_izakaya', 'kinka_izakaya', 'sushi_bong', 'uncle_tetsu']
+restaurants = json.load(open('../sendgrid/configs/restaurants.json'))
+restaurant_0 = restaurants['0']
+restaurant_1 = restaurants['1']
+restaurant_2 = restaurants['2']
+restaurant_3 = restaurants['3']
+restaurant_4 = restaurants['4']
 
-#google_data = json.load(open('googletraffic.json'))
+# Picking up json files that contain traffic data for each restaurant
+restaurant_0_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurant_0['nospace_name'] + "_gmaps_" + date + "_map.json"))
+restaurant_1_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurant_1['nospace_name'] + "_gmaps_" + date + "_map.json"))
+restaurant_2_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurant_2['nospace_name'] + "_gmaps_" + date + "_map.json"))
+restaurant_3_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurant_3['nospace_name'] + "_gmaps_" + date + "_map.json"))
+restaurant_4_gmap = json.load(open("../scrapy-yelp-tripadvisor/tutorial/spiders/data/json/" + restaurant_4['nospace_name'] + "_gmaps_" + date + "_map.json"))
 
-#create_chart(wilbur_mexicana_gmap, 'traffic_wilbur_mexicana', 'Wilbur Mexicana')
-print("BEGIN create_chart - Celebrity Hot Pot")
-create_chart(celebrity_hot_pot_gmap, 'traffic_celebrity_hot_pot', 'Celebrity Hot Pot')
-print("BEGIN create_chart - Hashi Izakaya")
-create_chart(hashi_izakaya_gmap, 'traffic_hashi_izakaya', 'Hashi  Izakaya')
-print("BEGIN create_chart - Kinka Izakaya")
-create_chart(kinka_izakaya_gmap, 'traffic_kinka_izakaya', 'Kinka Izakaya')
-print("BEGIN create_chart - Sushi Bong")
-create_chart(sushi_bong_gmap, 'traffic_sushi_bong', 'Sushi Bong')
-print("BEGIN create_chart - Uncle Tetsu")
-create_chart(uncle_tetsu_gmap, 'traffic_uncle_tetsu', 'Uncle Tetsu')
-print("END traffic_chart.py")
+# Creating barcharts for each restaurant
+create_chart(restaurant_0_gmap, 'traffic_' +  restaurant_0['nospace_name'], restaurant_0['name'])
+create_chart(restaurant_1_gmap, 'traffic_' +  restaurant_1['nospace_name'], restaurant_1['name'])
+create_chart(restaurant_2_gmap, 'traffic_' +  restaurant_2['nospace_name'], restaurant_2['name'])
+create_chart(restaurant_3_gmap, 'traffic_' +  restaurant_3['nospace_name'], restaurant_3['name'])
+create_chart(restaurant_4_gmap, 'traffic_' +  restaurant_4['nospace_name'], restaurant_4['name'])
 
+print("End traffic chart generation")
