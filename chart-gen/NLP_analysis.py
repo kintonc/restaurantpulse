@@ -82,9 +82,9 @@ def EmotionTotal(analysis):
 
 print("BEGIN NLP_analysis.py")
 
-now = datetime.datetime.now()
-date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
-#date = '2018-03-22'
+#now = datetime.datetime.now()
+#date = str(now.year)+"-"+str(now.month).zfill(2)+"-"+str(now.day).zfill(2)
+date = '2018-03-22'
 
 restaurants = json.load(open('../sendgrid/configs/restaurants.json'))
 restaurant_0 = restaurants['0']
@@ -125,7 +125,8 @@ restaurants = [restaurant_0['name'], restaurant_1['name'], restaurant_2['name'],
 
 # Creating sentiment graph 1 that shows "Joy", "Anger" and "Sadness" sentiments
 sentiments = ["Joy", "Anger", "Sadness"]
-colors = ["#c9d9d3", "#718dbf", "#e84d60"]
+#colors = ["#c9d9d3", "#718dbf", "#e84d60"]
+colors = ["#718dbf", "#f57c00", "#c9d9d3"]
 
 
 data = {'restaurants' : restaurants,
@@ -153,6 +154,7 @@ p = figure(x_range=restaurants, plot_height=250, title="Yelp & TripAdvisor Revie
 p.vbar_stack(sentiments, x='restaurants', width=0.9, color=colors, source=source,
              legend=False)
 
+#legend=[value(x) for x in sentiments]
 p.y_range.start = 0
 p.x_range.range_padding = 0.1
 p.xgrid.grid_line_color = None
@@ -172,7 +174,8 @@ output_file("../scrapy-yelp-tripadvisor/tutorial/spiders/data/html/sentiment_gra
 
 # Creating sentiment graph 2 that shows the overall sentiment from a review: "Positive", "Neutral" and "Negatie" sentiments
 sentiments = ["Positive", "Neutral", "Negative"]
-colors = ["#c9d9d3", "#718dbf", "#e84d60"]
+#colors = ["#c9d9d3", "#718dbf", "#e84d60"]
+colors = ["#4fb443", "#d9b42c", "#de061a"]
 
 
 data = {'restaurants' : restaurants,
